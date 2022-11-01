@@ -1,7 +1,7 @@
-package com.sbs.exam.sb_app_2022_10_13.member.service;
+package com.sbs.exam.sb_app_2022_10_13.service;
 
-import com.sbs.exam.sb_app_2022_10_13.member.repository.MemberRepository;
-import com.sbs.exam.sb_app_2022_10_13.member.vo.Member;
+import com.sbs.exam.sb_app_2022_10_13.repository.MemberRepository;
+import com.sbs.exam.sb_app_2022_10_13.vo.Member;
 import org.springframework.stereotype.Service;
 
 
@@ -23,9 +23,9 @@ public class MemberService {
     }
 
     // 이름 + 이메일 중복체크
-    oldMember = getMemberByNameAndEmail(name, email);
+    Member oldNamAndEmail = getMemberByNameAndEmail(name, email);
 
-    if( oldMember != null ) {
+    if( oldNamAndEmail != null ) {
       return -2;
     }
 
