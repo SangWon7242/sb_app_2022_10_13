@@ -18,7 +18,7 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/doAdd")
   @ResponseBody
-  public ResultData doAdd(String title, String body) {
+  public ResultData<Article> doAdd(String title, String body) {
     if( Ut.empty(title) ) {
       return ResultData.from("F-1", "title(을)를 입력해주세요.");
     }
@@ -27,13 +27,12 @@ public class UsrArticleController {
       return ResultData.from("F-2", "body(을)를 입력해주세요.");
     }
 
-
     ResultData<Integer> writeArticleRd = articleService.writeArticle(title, body);
     int id = writeArticleRd.getData1();
 
     Article article = articleService.getArticle(id);
 
-    return ResultData.from(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), article);
+    return ResultData.newData(writeArticleRd, article);
   }
 
   @RequestMapping("/usr/article/getArticles")
