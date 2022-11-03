@@ -24,6 +24,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+	/* JSP 엔진 */
+	compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
+	/* JSTL */
+	implementation group: 'org.eclipse.jetty', name: 'apache-jstl', version: '11.0.0'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
