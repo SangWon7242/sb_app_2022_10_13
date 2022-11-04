@@ -5,6 +5,8 @@
 <html lang="ko">
 <head>
   <title>메인</title>
+  <link rel="stylesheet" href="/static/css/common.css">
+  <script src="/static/js/common.js" defer></script>
 </head>
 <body>
   <h1>메인 페이지</h1>
