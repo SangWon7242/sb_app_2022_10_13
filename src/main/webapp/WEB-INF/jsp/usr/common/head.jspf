@@ -19,6 +19,7 @@
   <script src="/static/js/common.js" defer></script>
 </head>
 <body>
+
 <header class="h-[80px] bg-[#afafaf]">
   <div class="con mx-auto h-full flex">
     <a href="/" class="flex items-center px-3">
