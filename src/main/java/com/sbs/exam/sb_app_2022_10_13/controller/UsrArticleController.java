@@ -45,14 +45,14 @@ public class UsrArticleController {
     ResultData<Integer> writeArticleRd = articleService.writeArticle(loginedMemberId, title, body);
     int id = writeArticleRd.getData1();
 
-    Article article = articleService.getArticle(id);
+    Article article = articleService.getForPrintArticle(id);
 
     return ResultData.newData(writeArticleRd, "article", article);
   }
 
   @RequestMapping("/usr/article/list")
   public String showList(Model model) {
-    List<Article> articles = articleService.getArticles();
+    List<Article> articles = articleService.getForPrintArticles();
 
     model.addAttribute("articles", articles);
 
@@ -61,7 +61,7 @@ public class UsrArticleController {
 
   @RequestMapping("/usr/article/detail")
   public String showDetail(Model model, int id) {
-    Article article = articleService.getArticle(id);
+    Article article = articleService.getForPrintArticle(id);
 
     model.addAttribute("article", article);
 
@@ -83,7 +83,7 @@ public class UsrArticleController {
       return ResultData.from("F-A", "로그인 후 이용해주세요.");
     }
 
-    Article article = articleService.getArticle(id);
+    Article article = articleService.getForPrintArticle(id);
 
     if(article.getMemberId() != loginedMemberId ) {
       return ResultData.from("F-2", "권한이 없습니다.");
@@ -113,7 +113,7 @@ public class UsrArticleController {
       return ResultData.from("F-A", "로그인 후 이용해주세요.");
     }
 
-    Article article = articleService.getArticle(id);
+    Article article = articleService.getForPrintArticle(id);
 
     if(article.getMemberId() != loginedMemberId ) {
       return ResultData.from("F-2", "권한이 없습니다.");
