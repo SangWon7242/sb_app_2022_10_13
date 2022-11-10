@@ -59,7 +59,7 @@ public class UsrMemberController {
   }
 
   @RequestMapping("/usr/member/login")
-  public String shoLogin(HttpSession httpSession) {
+  public String showLogin(HttpSession httpSession) {
     return "usr/member/login";
   }
 
