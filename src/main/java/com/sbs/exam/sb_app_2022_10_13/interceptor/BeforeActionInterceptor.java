@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BeforeActionInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handle) throws Exception {
-    Rq rq = new Rq(req);
+    Rq rq = new Rq(req, resp);
     req.setAttribute("rq", rq);
 
     return HandlerInterceptor.super.preHandle(req, resp, handle);
