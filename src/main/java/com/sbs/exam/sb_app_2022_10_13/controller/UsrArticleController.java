@@ -85,7 +85,7 @@ public class UsrArticleController {
     if(article.getMemberId() != rq.getLoginedMemberId() ) {
       return Ut.jsHistoryBack("권한이 없습니다.");
     }
-    
+
     articleService.deleteArticle(id);
 
     return Ut.jsReplace(Ut.f("%d번 게시물을 삭제하였습니다.", id), "../article/list");
