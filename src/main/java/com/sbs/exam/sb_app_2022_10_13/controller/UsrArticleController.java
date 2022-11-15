@@ -20,9 +20,14 @@ public class UsrArticleController {
   @Autowired
   private ArticleService articleService;
 
-  @RequestMapping("/usr/article/doAdd")
+  @RequestMapping("/usr/article/write")
+  public String showWrite(HttpServletRequest req) {
+    return "usr/article/write";
+  }
+
+  @RequestMapping("/usr/article/doWrite")
   @ResponseBody
-  public ResultData<Article> doAdd(HttpServletRequest req, String title, String body) {
+  public ResultData<Article> doWrite(HttpServletRequest req, String title, String body) {
     Rq rq = (Rq) req.getAttribute("rq");
 
     if ( rq.isLogined()== false ) {
