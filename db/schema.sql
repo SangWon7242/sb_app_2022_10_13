@@ -111,7 +111,7 @@ INSERT INTO board
 SET regDate = NOW(),
 updateDate = NOW(),
 `code` = 'free1',
-`name` = '자유게시판';
+`name` = '자유';
 
 # 게시판 테이블에 boardId 칼럼 추가
 ALTER TABLE article ADD COLUMN boardId INT(10) UNSIGNED NOT NULL AFTER memberId;
@@ -125,3 +125,19 @@ WHERE id IN(1, 2);
 UPDATE article
 SET boardId = 2
 WHERE id IN(3);
+
+# 게시물 개수 늘리기
+/*
+insert into article
+(
+	regDate, updateDate, memberId, boardId, title, `body`
+)
+select NOW(), NOW(), FLOOR(RAND() * 2) + 1, FLOOR(RAND() * 2) + 1, concat('제목_', rand()), CONCAT('내용_', RAND())
+from article;
+*/
+
+
+
+
+
+
