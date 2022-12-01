@@ -2,6 +2,7 @@ package com.sbs.exam.sb_app_2022_10_13.controller;
 
 import com.sbs.exam.sb_app_2022_10_13.service.ArticleService;
 import com.sbs.exam.sb_app_2022_10_13.service.BoardService;
+import com.sbs.exam.sb_app_2022_10_13.service.ReactionPointService;
 import com.sbs.exam.sb_app_2022_10_13.util.Ut;
 import com.sbs.exam.sb_app_2022_10_13.vo.Article;
 import com.sbs.exam.sb_app_2022_10_13.vo.Board;
@@ -22,11 +23,13 @@ public class UsrArticleController {
 
   private ArticleService articleService;
   private BoardService boardService;
+  private ReactionPointService reactionPointService;
   private Rq rq;
 
-  public UsrArticleController(ArticleService articleService, BoardService boardService, Rq rq) {
+  public UsrArticleController(ArticleService articleService, BoardService boardService, ReactionPointService reactionPointService, Rq rq) {
     this.articleService = articleService;
     this.boardService = boardService;
+    this.reactionPointService = reactionPointService;
     this.rq = rq;
   }
 
@@ -89,7 +92,7 @@ public class UsrArticleController {
     Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
     model.addAttribute("article", article);
-    boolean actorCanMakeReactionPoint = articleService.actorCanMakeReactionPoint(rq.getLoginedMemberId(), id);
+    boolean actorCanMakeReactionPoint = reactionPointService.actorCanMakeReactionPoint(rq.getLoginedMemberId(), "article", id);
 
     model.addAttribute("actorCanMakeReactionPoint", actorCanMakeReactionPoint);
 
