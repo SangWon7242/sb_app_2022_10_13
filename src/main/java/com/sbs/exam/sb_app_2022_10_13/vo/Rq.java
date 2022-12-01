@@ -93,4 +93,20 @@ public class Rq {
   // 편의를 위해 beforeActionInterceptor에서 꼭 호출을 해줘야 한다.
   public void initOnBeforeActionInterceptor() {
   }
+
+
+  public String getCurrentUri() {
+    String currentUri = (String)req.getAttribute("javax.servlet.forward.request_uri");
+    String queryString = req.getQueryString();
+
+    if (queryString != null && queryString.length() > 0) {
+      currentUri += "?" + queryString;
+    }
+
+    return currentUri;
+  }
+
+  public String getEncodedCurrentUri() {
+    return Ut.getUriEncoded(getCurrentUri());
+  }
 }
