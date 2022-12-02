@@ -115,7 +115,7 @@
         </tr>
         <tr>
           <th>내용</th>
-          <td>${article.body}</td>
+          <td>${article.forPrintBody}</td>
         </tr>
         </tbody>
       </table>
@@ -204,7 +204,23 @@
 
 <section class="mt-5 con-min-width">
   <div class="con mx-auto px-3">
-    <h1>댓글 개수(${repliesCount})</h1>
+    <h1>댓글 개수(${replies.size()})</h1>
+    <div class="reply-list mt-3">
+      <c:forEach var="reply" items="${replies}">
+        <div class="reply-list__head">
+          <div class="flex flex-col">
+            <span class="font-bold">${reply.extra__writerName}</span>
+            <span>${reply.forPrintType2RegDate}</span>
+            <span>추천 : ${reply.goodReactionPoint}</span>
+          </div>
+        </div>
+        <div class="reply-list__body border-b border-gray-300 my-3">
+          <div class="flex items-center my-3">
+            ${reply.forPrintBody}
+          </div>
+        </div>
+      </c:forEach>
+    </div>
   </div>
 </section>
 
