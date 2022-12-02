@@ -202,4 +202,10 @@
   </div>
 </section>
 
+<section class="mt-5 con-min-width">
+  <div class="con mx-auto px-3">
+    <h1>댓글 개수(${repliesCount})</h1>
+  </div>
+</section>
+
 <%@ include file="../common/foot.jspf" %>
