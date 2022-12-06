@@ -18,8 +18,8 @@ public class ReplyService {
     this.replyRepository = replyRepository;
   }
 
-  public ResultData<Integer> writeArticle(int actorId, String relTypeCode, int relId, String body) {
-    replyRepository.writeArticle(actorId, relTypeCode, relId, body);
+  public ResultData<Integer> writeReply(int actorId, String relTypeCode, int relId, String body) {
+    replyRepository.writeReply(actorId, relTypeCode, relId, body);
     int id = replyRepository.getLastInsertId();
 
     return ResultData.from("S-1", Ut.f("%d번 댓글이 생성되었습니다.", id), "id", id);
@@ -69,5 +69,23 @@ public class ReplyService {
     }
 
     return ResultData.from("S-1", "댓글 삭제가 가능합니다.");
+  }
+
+  public Reply getForPrintReply(Member actor, int id) {
+    Reply reply = replyRepository.getForPrintReply(id);
+
+    updateForPrintData(actor, reply);
+
+    return reply;
+  }
+
+  public Reply getReply(int id) {
+    return replyRepository.getReply(id);
+  }
+
+  public ResultData deleteReply(int id) {
+    replyRepository.deleteReply(id);
+
+    return ResultData.from("S-1", Ut.f("%d번 댓글을 삭제하였습니다.", id));
   }
 }
