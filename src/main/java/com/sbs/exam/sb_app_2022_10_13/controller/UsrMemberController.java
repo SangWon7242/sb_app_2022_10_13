@@ -114,6 +114,11 @@ if (!rq.isLogined()) {
   public String showMyPage(HttpSession httpSession) {
     return "usr/member/myPage";
   }
+
+  @RequestMapping("/usr/member/checkPassword")
+  public String showCheckPassword(HttpSession httpSession) {
+    return "usr/member/checkPassword";
+  }
 }
 
 
