@@ -2,6 +2,7 @@ package com.sbs.exam.sb_app_2022_10_13.config;
 
 import com.sbs.exam.sb_app_2022_10_13.interceptor.BeforeActionInterceptor;
 import com.sbs.exam.sb_app_2022_10_13.interceptor.NeedLoginInterceptor;
+import com.sbs.exam.sb_app_2022_10_13.interceptor.NeedLogoutInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,6 +17,9 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
   // needLoginInterceptor 인터셉터 불러오기
   @Autowired
   NeedLoginInterceptor needLoginInterceptor;
+
+  @Autowired
+  NeedLogoutInterceptor needLogoutInterceptor;
 
   // 이 함수는 인터셉터를 적용하는 역할을 합니다.
   @Override
@@ -39,5 +43,15 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         .addPathPatterns("/usr/reactionPoint/doBadReaction")
         .addPathPatterns("/usr/reactionPoint/doCancelGoodReaction")
         .addPathPatterns("/usr/reactionPoint/doCancelBadReaction");
+
+    registry.addInterceptor(needLogoutInterceptor)
+        .addPathPatterns("/usr/member/join")
+        .addPathPatterns("/usr/member/doJoin")
+        .addPathPatterns("/usr/member/login")
+        .addPathPatterns("/usr/member/doLogin")
+        .addPathPatterns("/usr/member/findLoginId")
+        .addPathPatterns("/usr/member/doFindLoginId")
+        .addPathPatterns("/usr/member/findLoginPw")
+        .addPathPatterns("/usr/member/doFindLoginPw");
   }
 }

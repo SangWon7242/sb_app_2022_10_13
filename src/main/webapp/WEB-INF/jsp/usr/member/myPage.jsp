@@ -4,6 +4,7 @@
 <c:set var="pageTitle" value="마이페이지" />
 <%@ include file="../common/head.jspf" %>
 
+
 <section class="mt-5 con-min-width">
   <div class="con mx-auto px-3">
     <div class="table-box-type-1">
@@ -40,6 +41,8 @@
           <th>전화번호</th>
           <td>
             ${rq.loginedMember.cellphoneNo}
+            ${Ut.getUriEncoded('../article/modify')}
+            ${Ut.getUriEncoded('../member/modify')}
           </td>
         </tr>
         <tr>
