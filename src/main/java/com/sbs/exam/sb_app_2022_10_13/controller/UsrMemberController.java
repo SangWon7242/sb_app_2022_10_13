@@ -109,6 +109,11 @@ if (!rq.isLogined()) {
 
     return rq.jsReplace(Ut.f("로그아웃 되었습니다."), "/");
   }
+
+  @RequestMapping("/usr/member/myPage")
+  public String showMyPage(HttpSession httpSession) {
+    return "usr/member/myPage";
+  }
 }
 
 
